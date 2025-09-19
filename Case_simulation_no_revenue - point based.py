@@ -3,6 +3,15 @@ import pandas as pd
 import base64
 import plotly.graph_objects as go
 
+# --- Password Gate ---
+st.markdown("## 🔒 Secure Access")
+
+password = st.text_input("Enter access code:", type="password")
+
+if password != "Bariatrics":
+    st.warning("Please enter the correct access code to continue.")
+    st.stop()
+
 # Page config
 st.set_page_config(page_title="Theatre Case Mix Simulation", layout="wide")
 
@@ -337,3 +346,4 @@ with st.expander("Case Breakdown"):
             "Extra Complex": "➕ Yes" if case["extra_complex"] else "No"
         } for case in cases])
         st.dataframe(proc_df, hide_index=True, use_container_width=True)
+
